@@ -1,5 +1,5 @@
 {
-  "name": "claude-skills",
+  "name": "skills",
   "owner": { "name": "Christian Heidenreich" },
   "metadata": { "description": "Personal Claude Skills", "version": "1.0.0" },
   "plugins": [

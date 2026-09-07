@@ -39,7 +39,7 @@ Skills are physically grouped by category under `skills/`. `.claude-plugin/marke
 
 ```json
 {
-  "name": "claude-skills",
+  "name": "skills",
   "owner": { "name": "Christian Heidenreich" },
   "metadata": { "description": "Personal Claude Skills", "version": "1.0.0" },
   "plugins": [
@@ -67,8 +67,8 @@ If you'd rather install skills individually, change each plugin entry so its `sk
 
 ```bash
 claude plugin marketplace add sichvoge/skills
-claude plugin install idea-brief@skills
-claude plugin install conference-to-calendar@skills
+claude plugin install product@skills
+claude plugin install helper@skills
 ```
 
 **Any SKILL.md-compatible tool** (Codex/ChatGPT, Cursor, Gemini CLI, Copilot, etc.) via the cross-tool installer:
