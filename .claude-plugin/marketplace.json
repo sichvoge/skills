@@ -1,0 +1,27 @@
+{
+  "name": "claude-skills",
+  "owner": { "name": "Christian Heidenreich" },
+  "metadata": { "description": "Personal Claude Skills", "version": "1.0.0" },
+  "plugins": [
+    {
+      "name": "product",
+      "source": "./",
+      "skills": [
+        "./skills/product/idea-brief",
+        "./skills/product/prd"
+      ],
+      "category": "product",
+      "description": "Product management skills."
+    },
+    {
+      "name": "helper",
+      "source": "./",
+      "skills": [
+        "./skills/helper/conference-to-calendar",
+        "./skills/helper/company-research-profile"
+      ],
+      "category": "helper",
+      "description": "Skills that help with day-to-day tasks."
+    }
+  ]
+}

@@ -20,8 +20,10 @@ Skills are physically grouped by category under `skills/`. `.claude-plugin/marke
     │       └── SKILL.md
     └── helper/
         ├── conference-to-calendar/
-            ├── SKILL.md
-            └── reference.md
+        │   ├── SKILL.md
+        │   └── reference.md
+        └── company-research-profile/
+            └── SKILL.md
 ```
 
 ## Available skills
@@ -31,23 +33,35 @@ Skills are physically grouped by category under `skills/`. `.claude-plugin/marke
 | Product | `idea-brief` | Structures a product/feature idea into a brief for stakeholder review. |
 | Product | `prd` | Writes a full PRD / feature spec from a description of the work. |
 | Helper | `conference-to-calendar` | Extracts a conference program (webpage, PDF, or pasted text) into an importable `.ics` calendar file. |
+| Helper | `company-research-profile` | Builds a structured, skeptical company research profile (styled HTML) ahead of a job application, interview, or meeting. |
 
-`.claude-plugin/marketplace.json` declares one plugin per skill. Each entry's `skills` path points directly at the nested skill folder (which contains `SKILL.md` itself), so Claude Code installs exactly that one skill rather than scanning the whole category:
+`.claude-plugin/marketplace.json` declares one plugin per category. Each entry's `skills` array lists all skill folders in that category, so installing a plugin (e.g. `helper`) gives you every skill inside it:
 
 ```json
 {
   "name": "claude-skills",
-  "owner": { "name": "<your-github-user>" },
+  "owner": { "name": "Christian Heidenreich" },
   "metadata": { "description": "Personal Claude Skills", "version": "1.0.0" },
   "plugins": [
-    { "name": "idea-brief", "source": "./", "skills": ["./skills/product/idea-brief"], "category": "product" },
-    { "name": "prd", "source": "./", "skills": ["./skills/product/prd"], "category": "product" },
-    { "name": "conference-to-calendar", "source": "./", "skills": ["./skills/helper/conference-to-calendar"], "category": "helper" }
+    {
+      "name": "product",
+      "source": "./",
+      "skills": ["./skills/product/idea-brief", "./skills/product/prd"],
+      "category": "product",
+      "description": "Product management skills."
+    },
+    {
+      "name": "helper",
+      "source": "./",
+      "skills": ["./skills/helper/conference-to-calendar", "./skills/helper/company-research-profile"],
+      "category": "helper",
+      "description": "Skills that help with day-to-day tasks."
+    }
   ]
 }
 ```
 
-If you'd rather install a whole category in one step, point a plugin's `skills` at the category folder itself instead of a leaf skill — e.g. `"skills": ["./skills/product"]` — and Claude Code auto-discovers every skill folder one level inside it (`idea-brief`, `prd`) as part of that single plugin. That trades per-skill install granularity for a coarser "install by category" install; the per-skill entries above are the finer-grained default.
+If you'd rather install skills individually, change each plugin entry so its `skills` array contains only one path — e.g. `"skills": ["./skills/product/idea-brief"]` — and give each entry a unique `name`. That trades category-level convenience for per-skill install granularity.
 
 ## Installation
 
