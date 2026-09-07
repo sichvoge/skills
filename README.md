@@ -69,3 +69,7 @@ cp -r skills/helper-skills/skills/conference-to-calendar ~/.claude/skills/
 1. Pick (or create) the plugin group it belongs to.
 2. Add a new folder under `<plugin>/skills/<skill-name>/` with a `SKILL.md` (YAML frontmatter: `name`, `description`; the rest is instructions). Add a `reference.md` alongside it if the skill needs detailed format/API notes that shouldn't load into every conversation.
 3. Update the plugin's `plugin.json` version if you're bumping it, and add a row to the table above.
+
+## License
+
+MIT
